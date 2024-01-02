@@ -1,0 +1,5 @@
+use this when trying bypass script policy to deploy website:
+    PowerShell -ExecutionPolicy Bypass
+
+then deploy:
+    gcloud app deploy
