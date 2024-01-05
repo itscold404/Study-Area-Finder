@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
+
 //import { getAnalytics } from "firebase/analytics";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -24,5 +26,26 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+// Initialize services
+const db = getFirestore();
+const colRef = collection(db, "test");
+
+setDoc(doc(colRef, "customid"), {
+  field1: "f",
+  field2: "g",
+});
+
+getDocs(colRef).then((snapshot) => {
+  let tests = [];
+
+  // snapshot.docs is a list of items info. some
+  // info may not be useful
+  snapshot.docs.forEach((doc) => {
+    tests.push({ ...doc.data(), id: doc.id });
+  });
+
+  console.log(tests);
+});
 
 export { auth };
