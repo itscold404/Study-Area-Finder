@@ -27,25 +27,25 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-// Initialize services
-const db = getFirestore();
-const colRef = collection(db, "test");
+// // Initialize services
+// const db = getFirestore();
+// const colRef = collection(db, "test");
 
-setDoc(doc(colRef, "customid"), {
-  field1: "f",
-  field2: "g",
-});
+// setDoc(doc(colRef, "customid"), {
+//   field1: "f",
+//   field2: "g",
+// });
 
-getDocs(colRef).then((snapshot) => {
-  let tests = [];
+// getDocs(colRef).then((snapshot) => {
+//   let tests = [];
 
-  // snapshot.docs is a list of items info. some
-  // info may not be useful
-  snapshot.docs.forEach((doc) => {
-    tests.push({ ...doc.data(), id: doc.id });
-  });
+//   // snapshot.docs is a list of items info. some
+//   // info may not be useful
+//   snapshot.docs.forEach((doc) => {
+//     tests.push({ ...doc.data(), id: doc.id });
+//   });
 
-  console.log(tests);
-});
+//   console.log(tests);
+// });
 
 export { auth };
